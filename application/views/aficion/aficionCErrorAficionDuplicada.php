@@ -1,0 +1,1 @@
+<h3>ERROR. Nombre de afición duplicado</h3>

@@ -3,12 +3,12 @@
 class Pais extends CI_Controller
 {
 
-    function c()
+    public function c()
     {
         $this->load->view('pais/cGet');
     }
 
-    function cPost()
+    public function cPost()
     {
         $nombre = (isset($_POST['nombre']) && $_POST['nombre'] != '') ? $_POST['nombre'] : null;
         $this->load->model('pais_model');
@@ -24,5 +24,11 @@ class Pais extends CI_Controller
         else {
             $this->load->view('pais/paisCErrorPaisVacio');
         }
+    }
+
+    public function r() {
+        $this->load->model('pais_model');
+        $datos['paises'] = $this->pais_model->getAll();
+        $this->load->view('pais/r',$datos);
     }
 }

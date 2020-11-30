@@ -8,4 +8,4 @@
 
 	<input type="submit" value="Crear"/>
 </form>
-<button><a href="menu.php">Men�</a></button>
+<button><a href="<?=base_url()?>">Inicio</a></button>

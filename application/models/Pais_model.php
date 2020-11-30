@@ -1,13 +1,17 @@
 <?php
 class Pais_model extends CI_Model {
-    function c($nombre) {
+    public function c($nombre) {
         $pais = R::dispense('pais');
         $pais->nombre = $nombre;
         R::store($pais);
     }
     
-    function getPais($nombre) {
+    public function getPais($nombre) {
         return R::findOne('pais','nombre=?',[$nombre]);
+    }
+
+    public function getAll() {
+        return R::findAll('pais');
     }
 }
 ?>
