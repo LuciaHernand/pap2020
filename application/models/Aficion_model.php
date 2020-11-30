@@ -9,5 +9,9 @@ class Aficion_model extends CI_Model {
     function getAficion($nombre) {
         return R::findOne('aficion','nombre=?',[$nombre]);
     }
+    
+    public function getAll() {
+        return R::findAll('aficion');
+    }
 }
 ?>
