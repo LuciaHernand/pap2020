@@ -16,7 +16,7 @@
 	src="<?=base_url()?>assets/js/popper.min.js"></script>
 <script
 	src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-<title>PAP (lista países)</title>
+<title>P.A.P.<?=isset($head['title'])?'('.$head['title'].')':''?></title>
 </head>
 
 <body>

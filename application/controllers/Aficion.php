@@ -5,7 +5,8 @@ class Aficion extends CI_Controller
 
     function c()
     {
-        $this->load->view('aficion/cGet');
+        $datos['head']['title'] = 'Nueva afición';
+        frame($this,'aficion/cGet',$datos);
     }
 
     function cPost()
@@ -18,17 +19,18 @@ class Aficion extends CI_Controller
                 $this->load->view('aficion/aficionCOK');
             }
             else {
-                $this->load->view('aficion/aficionCErrorAficionDuplicada');
+                frame($this,'aficion/aficionCErrorAficionDuplicada');
             }
         }
         else {
-            $this->load->view('aficion/aficionCErrorAficionVacia');
+            frame($this,'aficion/aficionCErrorAficionVacia');
         }
     }
     
     public function r() {
         $this->load->model('aficion_model');
         $datos['aficiones'] = $this->aficion_model->getAll();
+        $datos['head']['title'] = 'Aficiones';
         
         frame($this,'aficion/r',$datos);
     }

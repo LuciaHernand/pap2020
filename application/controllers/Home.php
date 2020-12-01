@@ -6,11 +6,8 @@ class Home extends CI_Controller {
     }
     
     public function welcome() {
-        $this->load->view('home/home');
+        frame($this,'home/home');
     }
-    
-    public function goodbye() {
-        $this->load->view('home/goodbye');
-    }
+  
 }
 ?>

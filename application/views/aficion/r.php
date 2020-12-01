@@ -1,6 +1,12 @@
+<div class="container">
+
 <h1>Lista de aficiones</h1>
 
-<table>
+<form action="<?=base_url()?>aficion/c">
+	<input type="submit" value="Nueva"/>
+</form>
+
+<table class="table table-striped">
 
 <tr>
 	<th>Nombre</th>
@@ -12,3 +18,5 @@
 	</tr>
 <?php endforeach;?>
 </table>
+
+</div>

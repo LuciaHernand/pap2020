@@ -5,7 +5,7 @@ class Pais extends CI_Controller
 
     public function c()
     {
-        $this->load->view('pais/cGet');
+        frame($this,'pais/cGet');
     }
 
     public function cPost()
@@ -18,11 +18,11 @@ class Pais extends CI_Controller
                 $this->load->view('pais/paisCOK');
             }
             else {
-                $this->load->view('pais/paisCErrorPaisDuplicado');
+                frame($this,'pais/paisCErrorPaisDuplicado');
             }
         }
         else {
-            $this->load->view('pais/paisCErrorPaisVacio');
+            frame($this,'pais/paisCErrorPaisVacio');
         }
     }
 
