@@ -29,6 +29,7 @@ class Pais extends CI_Controller
     public function r() {
         $this->load->model('pais_model');
         $datos['paises'] = $this->pais_model->getAll();
-        $this->load->view('pais/r',$datos);
+        frame($this,'pais/r',$datos);
+      
     }
 }

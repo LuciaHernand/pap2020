@@ -29,6 +29,7 @@ class Aficion extends CI_Controller
     public function r() {
         $this->load->model('aficion_model');
         $datos['aficiones'] = $this->aficion_model->getAll();
-        $this->load->view('aficion/r',$datos);
+        
+        frame($this,'aficion/r',$datos);
     }
 }
