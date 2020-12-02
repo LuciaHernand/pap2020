@@ -24,16 +24,16 @@ class Persona extends CI_Controller
 
         if ($nombre != null && $dni!= null && $idPais != null) {
 
-            if ($this->persona_model->getPersona($dni)==null) {
+            if ($this->persona_model->getPersona($dni) == null) {
                 $this->persona_model->c($dni,$nombre,$idPais,$idAficiones); //VAMOS POR AQUI
-                $this->load->view('pais/paisCOK');
+                $this->load->view('persona/personaCOK');
             }
             else {
-                frame($this,'pais/paisCErrorPaisDuplicado');
+                frame($this,'persona/personaCErrorDniDuplicado');
             }
         }
         else {
-            frame($this,'pais/paisCErrorPaisVacio');
+            frame($this,'persona/personaCErrorDatosInsuficientes');
         }
         
     }
