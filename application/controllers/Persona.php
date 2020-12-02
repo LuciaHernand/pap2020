@@ -26,7 +26,7 @@ class Persona extends CI_Controller
 
             if ($this->persona_model->getPersona($dni) == null) {
                 $this->persona_model->c($dni,$nombre,$idPais,$idAficiones); //VAMOS POR AQUI
-                $this->load->view('persona/personaCOK');
+                frame($this,'persona/personaCOK');
             }
             else {
                 frame($this,'persona/personaCErrorDniDuplicado');

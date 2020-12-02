@@ -15,7 +15,7 @@ class Pais extends CI_Controller
         if ($nombre != null) {
             if ($this->pais_model->getPais($nombre)==null) {
                 $this->pais_model->c($nombre);
-                $this->load->view('pais/paisCOK');
+                frame($this,'pais/paisCOK');
             }
             else {
                 frame($this,'pais/paisCErrorPaisDuplicado');

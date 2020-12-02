@@ -16,7 +16,7 @@ class Aficion extends CI_Controller
         if ($nombre != null) {
             if ($this->aficion_model->getAficion($nombre)==null) {
                 $this->aficion_model->c($nombre);
-                $this->load->view('aficion/aficionCOK');
+                frame($this,'aficion/aficionCOK');
             }
             else {
                 frame($this,'aficion/aficionCErrorAficionDuplicada');
