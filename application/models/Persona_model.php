@@ -20,7 +20,10 @@ class Persona_model extends CI_Model {
             $gusto->aficion = $aficion;
             R::store($gusto);
         }
-        
+    }
+    
+    public function getAll() {
+        return R::findAll('persona');
     }
     
     

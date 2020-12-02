@@ -15,14 +15,14 @@ class Pais extends CI_Controller
         if ($nombre != null) {
             if ($this->pais_model->getPais($nombre)==null) {
                 $this->pais_model->c($nombre);
-                frame($this,'pais/paisCOK');
+                prg('País creado correctamente','pais/c');
             }
             else {
-                frame($this,'pais/paisCErrorPaisDuplicado');
+                prg('País duplicado','pais/c','danger');
             }
         }
         else {
-            frame($this,'pais/paisCErrorPaisVacio');
+            prg('Nombre de país nulo','pais/c','danger');
         }
     }
 

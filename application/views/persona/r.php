@@ -6,19 +6,27 @@
 	<input type="submit" value="Nuevo"/>
 </form>
 
-<!-- 
+
 <table class="table table-striped">
-
 	<tr>
+		<th>DNI</th>
 		<th>Nombre</th>
+		<th>País</th>
+		<th>Aficiones</th>
 	</tr>
 
-        <?php foreach ($paises as $pais):?>
-        	<tr>
-		<td> <?=$pais->nombre?></td>
+    <?php foreach ($personas as $persona):?>
+    <tr>
+		<td> <?=$persona->dni?> 	</td>
+		<td> <?=$persona->nombre?> 	</td>
+		<td><?=$persona->fetchAs('pais')->nace->nombre?>	</td>
+		<td>
+			<?php foreach ($persona->ownGustoList as $gusto):?>
+				<?= $gusto->aficion->nombre ?> 
+			<?php endforeach;?>
+		</td>
 	</tr>
-        <?php endforeach;?>
+    <?php endforeach;?>
 </table>
 
- -->
 </div>
