@@ -1,5 +1,6 @@
 <?php
-class Rb { 	function __construct() 	{
+class Rb { 	
+    function __construct() 	{
     include(APPPATH.'/config/database.php');
     include(APPPATH.'/third_party/rb/rb.php');
     $host = $db[$active_group]['hostname'];

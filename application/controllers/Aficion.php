@@ -16,14 +16,14 @@ class Aficion extends CI_Controller
         if ($nombre != null) {
             if ($this->aficion_model->getAficion($nombre)==null) {
                 $this->aficion_model->c($nombre);
-                frame($this,'aficion/aficionCOK');
+                header('Location:'.base_url().'aficion/r');
             }
             else {
-                frame($this,'aficion/aficionCErrorAficionDuplicada');
+                prg('nombre de afición duplicado','aficion/c','danger');
             }
         }
         else {
-            frame($this,'aficion/aficionCErrorAficionVacia');
+            prg('El nombre de afición no puede ser nulo','aficion/c','danger');
         }
     }
     

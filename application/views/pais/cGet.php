@@ -1,15 +1,38 @@
+<head>
+	<script type="text/javascript">
+	var x;
+	
+	function accionAJAX() {
+		var texto = x.responseText;
+		alert(texto);
+	}
+	
+	function f() {
+		x = new XMLHttpRequest();
+		x.open("POST","<?=base_url()?>pais/XcPost",true);
+		x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		x.send('nombre='+document.getElementById('idNombre').value);
+		
+		x.onreadystatechange = function() {
+			if (x.readyState==4 && x.status==200) {
+				accionAJAX();
+			}
+		}
+	}
+	</script>
+</head>
+
 <div class="container">
 
 <h1>Nuevo país</h1>
 
-<form action="<?=base_url()?>pais/cPost" method="post" class="form">
-
 	Nombre
-	<input type="text" name="nombre" class="form-item"/>
+	<input id="idNombre" type="text" name="nombre" class="form-item"/>
 	<br />
 
-	<input type="submit" value="Crear"/>
-</form>
-<button><a href="<?=base_url()?>">Inicio</a></button>
+	<input type="submit" onclick="f()" value="Crear"/>
+
+
 
 </div>
