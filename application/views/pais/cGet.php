@@ -5,6 +5,7 @@
 	function accionAJAX() {
 		var texto = x.responseText;
 		alert(texto);
+		window.location.href = '<?=base_url()?>pais/r';
 	}
 	
 	function f() {

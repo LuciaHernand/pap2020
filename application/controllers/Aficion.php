@@ -34,4 +34,21 @@ class Aficion extends CI_Controller
         
         frame($this,'aficion/r',$datos);
     }
+    
+    public function u() {
+        $idAficion = isset($_GET['idAficion'])?$_GET['idAficion']:null;
+        $this->load->model('aficion_model');
+        $datos['aficion'] = $this->aficion_model->getAficionById($idAficion);
+        frame($this,'aficion/u',$datos);
+    }
+    
+    public function uPost() {
+        $id = isset($_POST['id'])?$_POST['id']:null;
+        $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
+        
+        $this->load->model('pais_model');
+        $this->pais_model->u($id,$nombre);
+        
+        redirect(base_url().'pais/r');
+    }
 }
