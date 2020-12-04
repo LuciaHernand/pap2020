@@ -50,4 +50,29 @@ class Pais extends CI_Controller
         frame($this,'pais/r',$datos);
       
     }
+    
+    public function dPost() {
+        $idPais = isset($_POST['idPais'])?$_POST['idPais']:null;
+        $this->load->model('pais_model');
+        $this->pais_model->d($idPais);
+        redirect(base_url().'pais/r');
+    }
+    
+    public function u() {
+        $idPais = isset($_GET['idPais'])?$_GET['idPais']:null;
+        $this->load->model('pais_model');
+        $datos['pais'] = $this->pais_model->getPaisById($idPais);
+        frame($this,'pais/u',$datos);
+    }
+    
+    public function uPost() {
+        $id = isset($_POST['id'])?$_POST['id']:null;
+        $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
+        
+        $this->load->model('pais_model');
+        $this->pais_model->u($id,$nombre);
+        
+        redirect(base_url().'pais/r');
+    }
+    
 }

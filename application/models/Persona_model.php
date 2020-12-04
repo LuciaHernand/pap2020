@@ -8,10 +8,13 @@ class Persona_model extends CI_Model {
         $persona = R::dispense('persona');
         $persona->dni = $dni;
         $persona->nombre = $nombre;
-        $pais = R::load('pais',$idPais);
-        $persona->nace = $pais;
-        
         R::store($persona);
+
+        $pais = R::load('pais',$idPais);
+        
+        //$persona->nace = $pais;
+        $pais->alias('nace')->xownPersonaList [] = $persona;
+        R::store($pais);
         
         foreach ($idAficiones as $idAficion) {
             $aficion = R::load('aficion',$idAficion);

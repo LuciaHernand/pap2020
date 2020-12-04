@@ -19,7 +19,7 @@
     <tr>
 		<td> <?=$persona->dni?> 	</td>
 		<td> <?=$persona->nombre?> 	</td>
-		<td><?=$persona->fetchAs('pais')->nace->nombre?>	</td>
+		<td><?=$persona->nace_id != null ? $persona->fetchAs('pais')->nace->nombre : '-'?>	</td>
 		<td>
 			<?php foreach ($persona->ownGustoList as $gusto):?>
 				<?= $gusto->aficion->nombre ?> 

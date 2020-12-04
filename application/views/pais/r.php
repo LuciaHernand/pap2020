@@ -10,13 +10,37 @@
 
 	<tr>
 		<th>Nombre</th>
+		<th>Acción</th>
 	</tr>
 
-        <?php foreach ($paises as $pais):?>
-        	<tr>
-		<td> <?=$pais->nombre?></td>
+    <?php foreach ($paises as $pais):?>
+    <tr>
+		<td> 
+			<?=$pais->nombre?>
+		</td>
+	
+		<td class="row">
+		
+		<form action="<?=base_url()?>pais/dPost" method="post">
+			<button>
+				<img src="<?=base_url()?>assets/img/icons/basura.png" width="15" height="15"/>
+			</button>
+			<input type="hidden" name="idPais" value="<?=$pais->id?>"/>
+		</form>
+		
+		<form action="<?=base_url()?>pais/u" method="get">
+			<button>
+				<img src="<?=base_url()?>assets/img/icons/lapiz.png" width="15" height="15"/>
+			</button>
+			<input type="hidden" name="idPais" value="<?=$pais->id?>"/>
+		</form>
+		
+		</td>
+	
 	</tr>
-        <?php endforeach;?>
+    <?php endforeach;?>
+    
+    
 </table>
 
 </div>

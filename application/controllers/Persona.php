@@ -26,14 +26,14 @@ class Persona extends CI_Controller
 
             if ($this->persona_model->getPersona($dni) == null) {
                 $this->persona_model->c($dni,$nombre,$idPais,$idAficiones); //VAMOS POR AQUI
-                frame($this,'persona/personaCOK');
+                redirect(base_url().'persona/r');
             }
             else {
-                frame($this,'persona/personaCErrorDniDuplicado');
+                prg('Dni duplicado','persona/c','danger');
             }
         }
         else {
-            frame($this,'persona/personaCErrorDatosInsuficientes');
+            prg('Datos insuficientes','persona/c','danger');
         }
         
     }
