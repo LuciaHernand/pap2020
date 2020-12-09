@@ -2,6 +2,19 @@
 
 class Persona extends CI_Controller
 {
+    public function u() {
+        $idPersona = isset($_GET['idPersona'])?$_GET['idPersona']:null;
+        
+        $this->load->model('pais_model');
+        $this->load->model('aficion_model');
+        $this->load->model('persona_model');
+
+        $datos['paises'] = $this->pais_model->getAll();
+        $datos['aficiones'] = $this->aficion_model->getAll();
+        $datos['persona'] = $this->persona_model->getPersonaById($idPersona);
+        
+        frame($this,'persona/u',$datos);
+    }
 
     public function c()
     {
