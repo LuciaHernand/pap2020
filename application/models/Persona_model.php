@@ -10,6 +10,14 @@ class Persona_model extends CI_Model {
     }
     
     public function c($dni,$nombre,$idPais,$idAficiones) {
+        if ($nombre == null || $dni== null || $idPais == null) {
+            throw new Exception('El dni, nombre o país no pueden ser nulos');
+        }
+        
+        if ($this->getPersona($dni) != null) {
+            throw new Exception('DNI duplicado');
+        }
+        
         $persona = R::dispense('persona');
         $persona->dni = $dni;
         $persona->nombre = $nombre;

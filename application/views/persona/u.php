@@ -1,3 +1,14 @@
+<?php 
+function tieneAficion($aficion,$persona) {
+    $idGustos = [];
+    foreach ($persona->ownGustoList as $gusto) {
+        $idGustos[] = $gusto->aficion->id;
+    }
+    
+    return in_array($aficion->id, $idGustos);
+}
+?>
+
 <div class="container">
 <h1>Editar persona</h1>
 
@@ -21,7 +32,9 @@
 	<fieldset>
 	<legend>Aficiones</legend>
 	<?php foreach ($aficiones as $aficion):?>
-		<input id="id-<?=$aficion->id?>" type="checkbox" name="idAficiones[]" value="<?=$aficion->id?>"/>
+		<input id="id-<?=$aficion->id?>" type="checkbox" name="idAficiones[]" value="<?=$aficion->id?>"  
+		<?= (tieneAficion($aficion,$persona)?'checked="checked"':'')?> 
+		/>
 		<label for="id-<?=$aficion->id?>"><?=$aficion->nombre?></label> 
 	<?php endforeach;?>
 	</fieldset>

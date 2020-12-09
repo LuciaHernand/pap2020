@@ -35,18 +35,12 @@ class Persona extends CI_Controller
         
         $this->load->model('persona_model');
 
-        if ($nombre != null && $dni!= null && $idPais != null) {
-
-            if ($this->persona_model->getPersona($dni) == null) {
-                $this->persona_model->c($dni,$nombre,$idPais,$idAficiones); //VAMOS POR AQUI
-                redirect(base_url().'persona/r');
-            }
-            else {
-                prg('Dni duplicado','persona/c','danger');
-            }
+        try {
+            $this->persona_model->c($dni,$nombre,$idPais,$idAficiones); //VAMOS POR AQUI
+            redirect(base_url().'persona/r');
         }
-        else {
-            prg('Datos insuficientes','persona/c','danger');
+        catch (Exception $e) {
+            prg($e->getMessage(),'persona/c','danger');
         }
         
     }
