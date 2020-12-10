@@ -1,11 +1,14 @@
 <?php 
 function tieneAficion($aficion,$persona) {
-    $idGustos = [];
+    $sol = false;
+    
     foreach ($persona->ownGustoList as $gusto) {
-        $idGustos[] = $gusto->aficion->id;
+        if ($gusto->aficion->id == $aficion->id) {
+            $sol = true;
+        }
     }
     
-    return in_array($aficion->id, $idGustos);
+    return $sol;
 }
 ?>
 
@@ -13,6 +16,8 @@ function tieneAficion($aficion,$persona) {
 <h1>Editar persona</h1>
 
 <form action="<?=base_url()?>persona/uPost" method="post" class="form">
+	<input type="hidden" name="id" value="<?=$persona->id?>"/>
+
 	DNI
 	<input type="text" name="dni" class="form-item" value="<?=$persona->dni?>"/>
 	<br/>
@@ -40,7 +45,7 @@ function tieneAficion($aficion,$persona) {
 	</fieldset>
 	<br/>
 	
-	<input type="submit" value="Crear"/>
+	<input type="submit" value="Actualizar"/>
 </form>
 
 </div>

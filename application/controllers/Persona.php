@@ -16,6 +16,26 @@ class Persona extends CI_Controller
         frame($this,'persona/u',$datos);
     }
 
+    public function uPost()
+    {
+        $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : null;
+        $dni = (isset($_POST['dni']) && $_POST['dni'] != '') ? $_POST['dni'] : null;
+        $nombre = (isset($_POST['nombre']) && $_POST['nombre'] != '') ? $_POST['nombre'] : null;
+        $idPais= (isset($_POST['idPais']) && $_POST['idPais'] != '') ? $_POST['idPais'] : null;
+        $idAficiones = (isset($_POST['idAficiones']) && $_POST['idAficiones'] != '') ? $_POST['idAficiones'] : [];
+        
+        $this->load->model('persona_model');
+        
+        try {
+            $this->persona_model->u($id,$dni,$nombre,$idPais,$idAficiones); //VAMOS POR AQUI
+            redirect(base_url().'persona/r');
+        }
+        catch (Exception $e) {
+            prg($e->getMessage(),'persona/u?id='.$id,'danger');
+        }
+        
+    }
+    
     public function c()
     {
         $this->load->model('pais_model');
@@ -25,6 +45,7 @@ class Persona extends CI_Controller
         frame($this,'persona/cGet',$datos);
     }
 
+    
     public function cPost()
     {
         
