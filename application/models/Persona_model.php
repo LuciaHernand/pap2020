@@ -63,15 +63,30 @@ class Persona_model extends CI_Model {
         $pais->alias('nace')->xownPersonaList [] = $persona;
         R::store($pais);
         
-        /*
-        foreach ($idAficiones as $idAficion) {
-            $aficion = R::load('aficion',$idAficion);
-            $gusto = R::dispense('gusto');
-            $gusto->persona = $persona;
-            $gusto->aficion = $aficion;
-            R::store($gusto);
+        //$idAficiones
+        $idAficionesComunes = [];
+        foreach ($persona->ownGustoList as $gustoActual) {
+            if (in_array($gustoActual->aficion->id,$idAficiones)) { // Gusto que tengo que seguir teniendo
+                $idAficionesComunes[] = $gustoActual->aficion->id;
+            }
+            else {
+                R::store($persona); // PARCHE
+                R::trash($gustoActual);
+            }
         }
-        */
+        
+        foreach ($idAficiones as $idAficionATener) {
+            if (!in_array($idAficionATener,$idAficionesComunes)) {
+                $nuevoGusto = R::dispense('gusto');
+                $nuevoGusto->persona = $persona;
+                $nuevoGusto->aficion = R::load('aficion',$idAficionATener);
+                R::store($persona); //PARCHE
+                R::store($nuevoGusto);
+            }
+        }
+        
+        
+        
     }
     
     public function getAll() {
