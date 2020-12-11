@@ -10,6 +10,10 @@
 	<input type="text" name="nombre" class="form-item"/>
 	<br/>
 	
+	Contraseña
+	<input type="password" name="password" class="form-item"/>
+	<br/>
+
 	País nacimiento
 	<select name="idPais">
 		<?php foreach ($paises as $pais):?>
