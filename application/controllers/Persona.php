@@ -7,7 +7,7 @@ class Persona extends CI_Controller
     {
         frame($this, 'persona/login');
     }
-
+    
     public function loginPost()
     {
         $dni = (isset($_POST['dni']) && $_POST['dni'] != '') ? $_POST['dni'] : null;
@@ -27,6 +27,16 @@ class Persona extends CI_Controller
         }
     }
 
+    public function logout() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (isset($_SESSION['usuario'])) {
+            unset($_SESSION['usuario']);
+        }
+        prg('Hasta la próxima');
+    }
+    
     public function u()
     {
         $idPersona = isset($_GET['idPersona']) ? $_GET['idPersona'] : null;

@@ -1,5 +1,9 @@
-<!-- 
 <header class="container">
-AQUí IRíA un ENCABEZADO que QUERAMOS que SALGA en todas nuestras PÁGINAS, quizá el usuario actualmente autenticado guardado en una sesión, es decir <?= isset($_header ['usuario'] ['nombre'])?$_header ['usuario'] ['nombre']:'NINGUNO' ?>
+	<?php if (!isset($_header['usuario'])):?>
+    	<a href="<?=base_url()?>registro">Registro</a>/
+    	<a href="<?=base_url()?>login">Login</a>
+    <?php else: ?>
+    	Hola <?= $_header['usuario']->nombre ?> /
+    	<a href="<?=base_url()?>logout">Logout</a>
+    <?php endif; ?>
 </header>
- -->
