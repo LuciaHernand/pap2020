@@ -22,4 +22,6 @@ function prg($mensaje='Pulsa el botón para volver',$link='',$severidad='success
     
     header('Location:'.base_url().'msg');
 }
+
+
 ?>

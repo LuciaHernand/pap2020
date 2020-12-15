@@ -9,6 +9,7 @@
 
 <table class="table table-striped">
 	<tr>
+		<th>(rol)</th>
 		<th>DNI</th>
 		<th>Nombre</th>
 		<th>País</th>
@@ -18,6 +19,7 @@
 
     <?php foreach ($personas as $persona):?>
     <tr>
+		<td> <?=$persona->rol->nombre?> 	</td>
 		<td> <?=$persona->dni?> 	</td>
 		<td> <?=$persona->nombre?> 	</td>
 		<td><?=$persona->nace_id != null ? $persona->fetchAs('pais')->nace->nombre : '-'?>	</td>

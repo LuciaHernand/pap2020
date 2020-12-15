@@ -23,7 +23,7 @@ class Persona_model extends CI_Model {
         return R::find('persona','dni=?',[$dni]);
     }
     
-    public function c($dni,$nombre,$password,$idPais,$idAficiones) {
+    public function c($dni,$nombre,$password,$idPais,$idAficiones,$nombreRol='usuario') {
         if ($nombre == null || $dni== null || $idPais == null) {
             throw new Exception('El dni, nombre o país no pueden ser nulos');
         }
@@ -37,7 +37,19 @@ class Persona_model extends CI_Model {
         $persona->nombre = $nombre;
         $persona->password = password_hash($password,PASSWORD_DEFAULT);
         R::store($persona);
-
+    
+        $rol = R::findOne('rol','nombre=?',[$nombreRol]);
+        
+        // Este trozo de código, mejor hard-coded en la Base de Datos
+        if ($rol==null){
+            $rol = R::dispense('rol');
+            $rol->nombre = $nombreRol;
+            R::store($rol);
+        }
+        
+        $persona->rol = $rol;
+        R::store($persona);
+            
         $pais = R::load('pais',$idPais);
         
         //$persona->nace = $pais;

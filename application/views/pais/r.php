@@ -2,9 +2,11 @@
 
 <h1>Lista de países</h1>
 
+<?php if (rolOK('usuario')):?>
 <form action="<?=base_url()?>pais/c">
 	<input type="submit" value="Nuevo"/>
 </form>
+<?php endif;?>
 
 <table class="table table-striped">
 

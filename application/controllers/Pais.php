@@ -5,11 +5,17 @@ class Pais extends CI_Controller
 
     public function c()
     {
+        if (!rolOK('usuario')) {
+            show_404();
+        }
         frame($this,'pais/cGet');
     }
 
     public function cPost()
     {
+        if (!rolOK('usuario')) {
+            prg('Privilegios insuficientes','','danger');
+        }
         $nombre = (isset($_POST['nombre']) && $_POST['nombre'] != '') ? $_POST['nombre'] : null;
         $this->load->model('pais_model');
         if ($nombre != null) {

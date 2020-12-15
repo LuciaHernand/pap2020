@@ -4,6 +4,7 @@ class Pais_model extends CI_Model {
         $pais = R::dispense('pais');
         $pais->nombre = $nombre;
         R::store($pais);
+        return $pais;
     }
     
     public function getPais($nombre) {
