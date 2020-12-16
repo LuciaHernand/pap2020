@@ -58,6 +58,9 @@ class Pais extends CI_Controller
     }
     
     public function dPost() {
+        if (!rolOK('admin')) {
+            show_404();
+        }
         $idPais = isset($_POST['idPais'])?$_POST['idPais']:null;
         $this->load->model('pais_model');
         $this->pais_model->d($idPais);
@@ -65,6 +68,9 @@ class Pais extends CI_Controller
     }
     
     public function u() {
+        if (!rolOK('usuario')) {
+            show_404();
+        }
         $idPais = isset($_GET['idPais'])?$_GET['idPais']:null;
         $this->load->model('pais_model');
         $datos['pais'] = $this->pais_model->getPaisById($idPais);
@@ -72,6 +78,9 @@ class Pais extends CI_Controller
     }
     
     public function uPost() {
+        if (!rolOK('usuario')) {
+            show_404();
+        }
         $id = isset($_POST['id'])?$_POST['id']:null;
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
         

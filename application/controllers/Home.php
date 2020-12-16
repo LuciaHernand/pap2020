@@ -6,7 +6,13 @@ class Home extends CI_Controller {
     }
     
     public function welcome() {
-        frame($this,'home/home');
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        $rol = (isset($_SESSION['usuario']) ? $_SESSION['usuario']->rol->nombre : 'anon');
+        frame($this,'home/home_'.$rol);
+        
     }
     
     public function init() {

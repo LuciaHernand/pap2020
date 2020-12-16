@@ -23,19 +23,23 @@
 	
 		<td class="row">
 		
+		<?php if (rolOk('admin')):?>
 		<form action="<?=base_url()?>pais/dPost" method="post">
 			<button>
 				<img src="<?=base_url()?>assets/img/icons/basura.png" width="15" height="15"/>
 			</button>
 			<input type="hidden" name="idPais" value="<?=$pais->id?>"/>
 		</form>
+		<?php endif;?>
 		
+		<?php if (rolOK('usuario')):?>
 		<form action="<?=base_url()?>pais/u" method="get">
 			<button>
 				<img src="<?=base_url()?>assets/img/icons/lapiz.png" width="15" height="15"/>
 			</button>
 			<input type="hidden" name="idPais" value="<?=$pais->id?>"/>
 		</form>
+		<?php endif;?>
 		
 		</td>
 	
